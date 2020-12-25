@@ -5,29 +5,34 @@ chrome_options = webdriver.ChromeOptions()
 prefs = {"profile.default_content_setting_values.notifications" : 2}
 chrome_options.add_experimental_option("prefs",prefs)
 driver = webdriver.Chrome(chrome_options=chrome_options)
+def practically():
+    try :
+        driver.get('https://www.practically.com')
+        print('practically opened')
+    except Exception as e :
+        print(e)
+        speak('error occoured while opening practically.com')
+        print('error occoured while opening practically.com')
 
-try :
-    driver.get('https://www.practically.com')
-except Exception as e :
-    print(e)
-    speak('error occoured while opening practically.com')
-    print('error occoured while opening practically.com')
-
-time.sleep(2)
-try :
-    driver.find_element_by_link_text('Login').click()
     time.sleep(1)
-    driver.find_element_by_xpath('//*[@id="LoginID"]').send_keys('bpt0257')
-    driver.find_element_by_xpath('//*[@id="password"]').send_keys('rohith2078')
-    driver.find_element_by_xpath('//*[@id="loginform"]/div[5]/button').click()
-except Exception as e:
-    print(e)
-    print('error occoured while logging in')
-    speak('error occoured while logging in')
-time.sleep(2)
-try :
-    driver.find_element_by_xpath('//*[@id="upcoming"]/div[2]/div/div[2]/div[3]/a').click()
-except Exception as e:
-    print(e)
-    print('error occoured while joining the class')
-    speak('error occoured while joining the class')
+    try :
+        driver.find_element_by_link_text('Login').click()
+        time.sleep(1)
+        driver.find_element_by_xpath('//*[@id="LoginID"]').send_keys('bpt0257')
+        driver.find_element_by_xpath('//*[@id="password"]').send_keys('rohith2078')
+        driver.find_element_by_xpath('//*[@id="loginform"]/div[5]/button').click()
+        print('loged in successfully')
+    except Exception as e:
+        print(e)
+        print('error occoured while logging in')
+        speak('error occoured while logging in')
+    time.sleep(2)
+    try :
+        driver.find_element_by_xpath('//*[@id="upcoming"]/div[2]/div/div[2]/div[3]/a').click()
+        print('class joined')
+        speak('class joined')
+    except Exception as e:
+        print(e)
+        print('error occoured while joining the class')
+        speak('error occoured while joining the class')
+practically()
