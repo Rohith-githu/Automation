@@ -1,43 +1,51 @@
 from selenium import webdriver
 import time
 import pyautogui
+import schedule
 
 # block_notify = 
-chrome_options = webdriver.ChromeOptions()
-prefs = {"profile.default_content_setting_values.notifications" : 2}
-chrome_options.add_experimental_option("prefs",prefs)
-driver = webdriver.Chrome(chrome_options=chrome_options)
-# driver = webdriver.Chrome()
-driver.get('https://www.facebook.com/')
+def advertise():
+	chrome_options = webdriver.ChromeOptions()
+	prefs = {"profile.default_content_setting_values.notifications" : 2}
+	chrome_options.add_experimental_option("prefs",prefs)
+	driver = webdriver.Chrome(chrome_options=chrome_options)
+	# driver = webdriver.Chrome()
+	driver.get('https://www.facebook.com/')
 
-login_user = driver.find_element_by_xpath('//*[@id="email"]')
-login_password = driver.find_element_by_xpath('//*[@id="pass"]')
-login_user.send_keys('sairohith7050@gmail.com')
-login_password.send_keys('rohith7050')
+	login_user = driver.find_element_by_xpath('//*[@id="email"]')
+	login_password = driver.find_element_by_xpath('//*[@id="pass"]')
+	login_user.send_keys('sairohith7050@gmail.com')
+	login_password.send_keys('rohith7050')
 
-login_click = driver.find_element_by_xpath('//*[@id="u_0_b"]')
-login_click.click()
+	login_click = driver.find_element_by_xpath('//*[@id="u_0_b"]')
+	login_click.click()
 
-time.sleep(5)
-writer = driver.find_element_by_xpath('//*[@id="mount_0_0"]/div/div[1]/div[1]/div[3]/div/div/div[1]/div[1]/div/div[2]/div/div/div[3]/div/div[2]/div/div/div/div[2]/div[3]')
+	time.sleep(5)
+	writer = driver.find_element_by_xpath('//*[@id="mount_0_0"]/div/div[1]/div[1]/div[3]/div/div/div[1]/div[1]/div/div[2]/div/div/div[3]/div/div[2]/div/div/div/div[2]/div[3]')
 
-writer.click()
+	writer.click()
 
-time.sleep(5)
+	time.sleep(5)
 
-writer_nav = driver.find_element_by_xpath('//*[@id="mount_0_0"]/div/div[1]/div[1]/div[4]/div/div/div[1]/div/div[2]/div/div/div/form/div/div[2]/div/div/div[1]/div[2]/div')
-writer_nav.click()
+	writer_nav = driver.find_element_by_xpath('//*[@id="mount_0_0"]/div/div[1]/div[1]/div[4]/div/div/div[1]/div/div[2]/div/div/div/form/div/div[2]/div/div/div[1]/div[2]/div')
+	writer_nav.click()
 
-time.sleep(5)
+	time.sleep(5)
 
-writer_info = driver.find_element_by_xpath('//*[@id="mount_0_0"]/div/div[1]/div[1]/div[4]/div/div/div[1]/div/div[2]/div/div/div/form/div/div[1]/div/div/div[2]/div[1]/div[1]/div/div[1]/div/div/div/div/div[2]/div/div/div/div')
-# writer_info.click()
-writer_info.send_keys('https://www.youtube.com/channel/UCv7nksUmx87wCcmft7PBnrw Please like, share and subscribe my channel')
-time.sleep(5)
-post_button = driver.find_element_by_xpath('//*[@id="mount_0_0"]/div/div[1]/div[1]/div[4]/div/div/div[1]/div/div[2]/div/div/div/form/div/div[1]/div/div/div[3]/div[2]/div')
-post_button.click()
+	writer_info = driver.find_element_by_xpath('//*[@id="mount_0_0"]/div/div[1]/div[1]/div[4]/div/div/div[1]/div/div[2]/div/div/div/form/div/div[1]/div/div/div[2]/div[1]/div[1]/div/div[1]/div/div/div/div/div[2]/div/div/div/div')
+	# writer_info.click()
+	writer_info.send_keys('https://www.youtube.com/channel/UCv7nksUmx87wCcmft7PBnrw Please like, share and subscribe my channel')
+	time.sleep(5)
+	post_button = driver.find_element_by_xpath('//*[@id="mount_0_0"]/div/div[1]/div[1]/div[4]/div/div/div[1]/div/div[2]/div/div/div/form/div/div[1]/div/div/div[3]/div[2]/div')
+	post_button.click()
 
-time.sleep(5)
+	time.sleep(5)
 
-like_button = driver.find_element_by_xpath('//*[@id="mount_0_0"]/div/div[1]/div[1]/div[3]/div/div/div[1]/div[1]/div/div[2]/div/div/div[3]/div/div[4]/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[2]/div/div[4]/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]')
-like_button.click()
+	like_button = driver.find_element_by_xpath('//*[@id="mount_0_0"]/div/div[1]/div[1]/div[3]/div/div/div[1]/div[1]/div/div[2]/div/div/div[3]/div/div[4]/div/div[1]/div/div/div/div/div/div/div/div/div/div/div[2]/div/div[4]/div/div/div[1]/div/div/div/div[1]/div[1]/div[1]')
+	like_button.click()
+
+# schedule.every().day.at("16:00").do(advertise)
+# while True: 
+#     schedule.run_pending() 
+#     time.sleep(1) 
+advertise()
